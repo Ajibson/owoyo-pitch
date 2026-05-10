@@ -238,24 +238,40 @@
       background: #fff; border: 1px solid var(--gray100); border-radius: 20px;
       padding: 32px; transition: border-color .2s, box-shadow .2s;
     }
-    .problem-card:hover { border-color: rgba(0,109,62,.3); box-shadow: 0 8px 30px rgba(0,0,0,.07); }
+    .problem-card:hover { border-color: rgba(179,38,30,.2); box-shadow: 0 8px 30px rgba(0,0,0,.07); }
     .problem-icon {
       width: 52px; height: 52px; background: var(--navy); border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       color: var(--cream); margin-bottom: 20px; transition: background .2s;
     }
-    .problem-card:hover .problem-icon { background: var(--green); }
+    .problem-card:hover .problem-icon { background: var(--red); }
     .problem-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .problem-card p { font-size: 14px; color: var(--gray500); line-height: 1.7; }
 
-    /* ── SOLUTION ─────────────────────────────────────── */
-    .solution { background: #fff; }
-    .solution-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 40px; }
-    .solution-tag {
-      background: var(--navy); color: #fff;
-      font-size: 13px; font-weight: 600; padding: 8px 18px;
-      border-radius: 999px;
+    /* ── GUIDE ────────────────────────────────────────── */
+    .guide { background: var(--navy); }
+    .guide-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
     }
+    .guide-text .sub {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 12px;
+    }
+    .guide-text h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+      color: #fff; line-height: 1.2; margin-bottom: 20px;
+    }
+    .guide-text p {
+      font-size: 15px; color: rgba(255,255,255,.6); line-height: 1.75; margin-bottom: 16px;
+    }
+    .guide-proof { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .guide-proof-stat {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px; padding: 20px; text-align: center;
+    }
+    .guide-proof-value { font-size: 1.8rem; font-weight: 900; color: var(--cream); margin-bottom: 4px; }
+    .guide-proof-label { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.4; }
 
     /* ── FEATURES ─────────────────────────────────────── */
     .features { background: var(--gray50); }
@@ -310,11 +326,6 @@
     .how { background: var(--navy); }
     .how .section-title { color: #fff; }
     .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; position: relative; }
-    .how-line {
-      position: absolute; top: 42px; left: 33%; right: 33%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--green), transparent);
-      display: none;
-    }
     .how-card {
       background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
       border-radius: 20px; padding: 32px; text-align: center;
@@ -370,6 +381,35 @@
     .sec-stat { background: rgba(255,255,255,.05); border-radius: 14px; padding: 16px; text-align: center; }
     .sec-stat-value { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 900; color: var(--green); }
     .sec-stat-label { font-size: 11px; color: rgba(255,255,255,.45); margin-top: 4px; line-height: 1.4; }
+
+    /* ── STAKES ───────────────────────────────────────── */
+    .stakes { background: var(--gray50); }
+    .stakes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+    .stakes-col { border-radius: 24px; padding: 40px; }
+    .stakes-col.before { background: #fff; border: 1px solid var(--gray100); }
+    .stakes-col.after  { background: var(--navy); }
+    .stakes-col-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; margin-bottom: 20px; display: block;
+    }
+    .stakes-col.before .stakes-col-label { color: var(--red); }
+    .stakes-col.after  .stakes-col-label { color: var(--cream); }
+    .stakes-col h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 900;
+      margin-bottom: 28px; line-height: 1.25;
+    }
+    .stakes-col.after h3 { color: #fff; }
+    .stakes-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .stakes-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.55; }
+    .stakes-col.before .stakes-item { color: var(--gray600); }
+    .stakes-col.after  .stakes-item { color: rgba(255,255,255,.75); }
+    .stakes-icon {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; margin-top: 1px;
+    }
+    .stakes-col.before .stakes-icon { background: rgba(179,38,30,.1); color: var(--red); }
+    .stakes-col.after  .stakes-icon { background: rgba(0,109,62,.3); color: #4ade80; }
 
     /* ── MARKET ───────────────────────────────────────── */
     .market { background: #fff; }
@@ -503,6 +543,7 @@
       .grid-4 { grid-template-columns: 1fr 1fr; }
       .metrics-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
       .problem-grid { grid-template-columns: 1fr; }
+      .guide-inner { grid-template-columns: 1fr; gap: 36px; }
       .feature-row { grid-template-columns: 1fr; gap: 32px; }
       .feature-row.flip .feature-text { order: 1; }
       .feature-row.flip .feature-visual { order: 2; }
@@ -511,6 +552,7 @@
       .sec-cards { grid-template-columns: 1fr; }
       .sec-commitment { flex-direction: column; }
       .sec-stats { grid-template-columns: repeat(3,1fr); width: 100%; }
+      .stakes-grid { grid-template-columns: 1fr; }
       .market-stats { grid-template-columns: 1fr; }
       .why-wins-grid { grid-template-columns: 1fr; }
       .bm-cards { grid-template-columns: 1fr; }
@@ -544,8 +586,7 @@
       </div>
       <div class="nav-links">
         <a href="#demo">Demo</a>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
+        <a href="#problem">The Problem</a>
         <a href="#features">Features</a>
         <a href="#security">Security</a>
         <a href="#market">Market</a>
@@ -561,8 +602,7 @@
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-menu-inner">
         <a href="#demo">Demo</a>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
+        <a href="#problem">The Problem</a>
         <a href="#features">Features</a>
         <a href="#security">Security</a>
         <a href="#market">Market</a>
@@ -572,7 +612,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ① THE CHARACTER — Hero -->
   <section class="hero">
     <div class="hero-grid"></div>
     <div class="hero-blob hero-blob-1"></div>
@@ -582,13 +622,13 @@
         <div class="hero-badge-dot"></div>
         Now in Private Beta — Early Access Open
       </div>
-      <h1>The Financial OS<br><span class="grad-text">Built for Africa</span></h1>
-      <p>Owoye gives African SMEs real-time cash flow visibility, automated invoice reconciliation, and an AI financial advisor — so you can grow your business, not manage spreadsheets.</p>
+      <h1>You built your business<br>from nothing.<br><span class="grad-text">You deserve to know<br>where every naira is.</span></h1>
+      <p>African SME owners shouldn't have to manage their finances on WhatsApp, spreadsheets, and gut feel. Owoye gives you real-time cash flow clarity, automated reconciliation, and an AI advisor who never sleeps — so you can stop scrambling and start growing.</p>
       <div class="hero-ctas">
-        <a href="#cta" class="btn-pill">Request Early Access</a>
+        <a href="#cta" class="btn-pill">Get Early Access — Free</a>
         <a href="#demo" class="btn-pill-outline" style="display:inline-flex;align-items:center;gap:8px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          Watch Demo
+          See It in Action
         </a>
       </div>
       <!-- Dashboard mockup -->
@@ -669,110 +709,171 @@
     </div>
   </section>
 
-  <!-- METRICS -->
+  <!-- ② THE PROBLEM — The Villain -->
   <section class="metrics">
     <div class="container">
+      <div class="text-center reveal" style="margin-bottom:40px;">
+        <p style="font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,.7);font-weight:500;max-width:560px;margin:0 auto;">The data is brutal. And this is the villain every African SME owner faces every single day.</p>
+      </div>
       <div class="metrics-grid">
         <div class="reveal" data-delay="1">
           <div class="metric-value">42%</div>
           <div class="metric-label">of SME Failures</div>
-          <div class="metric-sub">caused by poor cash flow management</div>
+          <div class="metric-sub">caused by poor cash flow management — not bad products</div>
         </div>
         <div class="reveal" data-delay="2">
           <div class="metric-value">37M+</div>
           <div class="metric-label">SMEs in Africa</div>
-          <div class="metric-sub">with no digital financial tools</div>
+          <div class="metric-sub">flying blind without real-time financial tools</div>
         </div>
         <div class="reveal" data-delay="3">
           <div class="metric-value">35%</div>
           <div class="metric-label">of Invoices Overdue</div>
-          <div class="metric-sub">average Nigerian SME, per CBN data</div>
+          <div class="metric-sub">in the average Nigerian SME, per CBN data</div>
         </div>
         <div class="reveal" data-delay="4">
           <div class="metric-value">8 hrs+</div>
           <div class="metric-label">Lost Weekly</div>
-          <div class="metric-sub">per business on manual financial admin</div>
+          <div class="metric-sub">per business on manual financial admin that should be automatic</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROBLEM -->
   <section class="section problem" id="problem">
     <div class="container">
       <div class="reveal text-center">
         <span class="tag tag--green">The Problem</span>
-        <h2 class="section-title">African SMEs are running blind</h2>
-        <p class="section-sub">42% of African SME failures are caused by poor cash flow management — not lack of revenue. The tools they need simply didn't exist. Until now.</p>
+        <h2 class="section-title">Cash flow blindness is killing African businesses.</h2>
+        <p class="section-sub">It's not competition. It's not bad luck. 42% of African SME failures come from a single, solvable problem: not knowing where the money is. This is the villain you're up against every day.</p>
       </div>
       <div class="problem-grid">
         <div class="problem-card reveal" data-delay="1">
           <div class="problem-icon">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
           </div>
-          <h3>Cash Flow Blindness</h3>
-          <p>African SMEs manage their cash flow using spreadsheets, WhatsApp messages, and memory — with no real-time visibility into what's coming in or going out.</p>
+          <h3>You can't manage what you can't see</h3>
+          <p>Managing cash flow on spreadsheets, WhatsApp, and memory means you're always reacting — never deciding. The numbers you need are already there. You just can't see them.</p>
         </div>
         <div class="problem-card reveal" data-delay="2">
           <div class="problem-icon">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
           </div>
-          <h3>Manual Reconciliation Nightmare</h3>
-          <p>Hours wasted every week manually matching bank transactions to invoices. Errors go undetected. Revenue leaks through the cracks silently.</p>
+          <h3>Every manual entry is a mistake waiting to happen</h3>
+          <p>Hours every week matching bank statements to invoices by hand. Every mismatch is money you either can't find or already lost. This is not a minor inconvenience — it's a revenue leak.</p>
         </div>
         <div class="problem-card reveal" data-delay="3">
           <div class="problem-icon">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3>Late Payments Kill Growth</h3>
-          <p>The average Nigerian SME has 35% of receivables overdue. Without automated follow-ups, chasing payment becomes a full-time job that distracts from growth.</p>
+          <h3>Late payments are silently strangling your growth</h3>
+          <p>The average Nigerian SME has 35% of its receivables overdue at any time. Without automated follow-ups, chasing payment becomes a full-time job — pulling you away from the work that actually grows your business.</p>
         </div>
         <div class="problem-card reveal" data-delay="4">
           <div class="problem-icon">
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg>
           </div>
-          <h3>No Financial Intelligence</h3>
-          <p>SME owners make critical decisions — hiring, inventory, expansion — without access to predictive insights. They are flying blind in a complex financial landscape.</p>
+          <h3>You're making ₦million decisions on ₦0 data</h3>
+          <p>Hiring, stocking up, expanding — these decisions require knowing your future cash position. Making them on gut feel isn't brave. It's a gamble you shouldn't have to take.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUTION -->
-  <section class="section solution" id="solution">
+  <!-- ③ THE GUIDE — Meet Owoye -->
+  <section class="section guide" id="guide">
     <div class="container">
-      <div class="reveal text-center">
-        <span class="tag tag--green">The Solution</span>
-        <h2 class="section-title">One platform. Total financial clarity.</h2>
-        <p class="section-sub">Owoye brings together banking data, invoicing, AI intelligence, and predictive analytics into a single, beautiful workspace designed for the African business owner.</p>
-      </div>
-      <div class="solution-tags reveal" data-delay="2">
-        <span class="solution-tag">Bank Integration</span>
-        <span class="solution-tag">Invoice Management</span>
-        <span class="solution-tag">Auto Reconciliation</span>
-        <span class="solution-tag">AI Advisor (Leo)</span>
-        <span class="solution-tag">Revenue Forecasting</span>
-        <span class="solution-tag">Customer Tracking</span>
-        <span class="solution-tag">Payment Reminders</span>
-        <span class="solution-tag">Expense Analytics</span>
+      <div class="guide-inner reveal">
+        <div class="guide-text">
+          <div class="sub">Meet Your Guide</div>
+          <h2>We've talked to 40+ SME owners.<br>We understand this fight — and we built the weapon to win it.</h2>
+          <p>Owoye was born out of those conversations. Every single business owner described the same exhaustion: money moving in and out with no clear picture of what was left, and no tool designed for the way African businesses actually work.</p>
+          <p>We're not here to add another app to your phone. We're here to give you the financial clarity that turns your hard work into predictable, confident, sustainable growth. Think of us as your CFO — available 24/7, at a fraction of the cost.</p>
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#cta" class="btn-pill" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);">Get Early Access</a>
+            <a href="#how-it-works" class="btn-pill" style="background:var(--green);">See How It Works</a>
+          </div>
+        </div>
+        <div class="guide-proof">
+          <div class="guide-proof-stat">
+            <div class="guide-proof-value">40+</div>
+            <div class="guide-proof-label">SME owners interviewed before we wrote a line of code</div>
+          </div>
+          <div class="guide-proof-stat">
+            <div class="guide-proof-value">100%</div>
+            <div class="guide-proof-label">cited cash flow as their single biggest challenge</div>
+          </div>
+          <div class="guide-proof-stat">
+            <div class="guide-proof-value">9/10</div>
+            <div class="guide-proof-label">said they would pay for what Owoye does</div>
+          </div>
+          <div class="guide-proof-stat">
+            <div class="guide-proof-value">0</div>
+            <div class="guide-proof-label">adequate tools existed for them before today</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- ④ THE PLAN — How It Works -->
+  <section class="section how" id="how-it-works">
+    <div class="container">
+      <div class="reveal text-center" style="margin-bottom:56px;">
+        <span class="tag tag--cream">The Plan</span>
+        <h2 class="section-title" style="color:#fff;">Three steps to total financial clarity</h2>
+        <p style="font-size:clamp(1rem,2vw,1.15rem);color:rgba(255,255,255,.5);max-width:560px;margin:0 auto;line-height:1.7;">A clear path is what separates confusion from confidence. Here's exactly what happens when you join Owoye.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card reveal" data-delay="1">
+          <div class="how-step">Step 01</div>
+          <div class="how-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+          </div>
+          <h3>Connect Your Bank</h3>
+          <p>Link your business bank account in under 2 minutes using our CBN-regulated Mono integration. All 30+ Nigerian banks supported. Your data is encrypted end-to-end. We never see your login credentials.</p>
+        </div>
+        <div class="how-card reveal" data-delay="2">
+          <div class="how-step">Step 02</div>
+          <div class="how-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+          </div>
+          <h3>Send Your First Invoice</h3>
+          <p>Create professional invoices in seconds. Set payment terms and send directly to customers. Owoye tracks every invoice from creation to payment — automatically, with zero manual follow-up required.</p>
+        </div>
+        <div class="how-card reveal" data-delay="3">
+          <div class="how-step">Step 03</div>
+          <div class="how-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Run Your Business With Clarity</h3>
+          <p>From the moment money moves, you see it. Leo reconciles transactions, updates your dashboard, and surfaces what needs your attention — so every financial decision you make is grounded in real data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ CALL TO ACTION (transitional) -->
+  <div style="background:var(--green);padding:28px 20px;text-align:center;">
+    <p style="font-size:15px;color:rgba(255,255,255,.9);margin-bottom:12px;font-weight:500;">Ready to stop guessing? Join the businesses already on the waitlist.</p>
+    <a href="#cta" class="btn-pill" style="background:#fff;color:var(--green);font-size:14px;">Get Early Access — Free →</a>
+  </div>
+
+  <!-- FEATURES — Transformation Outcomes -->
   <section class="section features" id="features">
     <div class="container">
       <div class="reveal text-center" style="margin-bottom:56px;">
-        <span class="tag tag--green">Features</span>
-        <h2 class="section-title">Built for how you actually work</h2>
+        <span class="tag tag--green">What Changes</span>
+        <h2 class="section-title">From blind to clear.<br>From reactive to confident.</h2>
+        <p class="section-sub" style="margin:0 auto;">Every feature in Owoye was built to solve a specific pain we heard from real SME owners. Here's what your financial life looks like after.</p>
       </div>
 
       <!-- Feature 1 -->
       <div class="feature-row reveal">
         <div class="feature-text">
-          <div class="feature-tag">Real-Time</div>
-          <h3>Live Cash Flow Dashboard</h3>
-          <p>See exactly what's coming in and going out of your business today — not at the end of the month. Track revenue, expenses, and net position at a glance with intelligent KPI cards that surface what matters most.</p>
+          <div class="feature-tag">Before → After</div>
+          <h3>See every naira, in real time — not at month-end</h3>
+          <p>No more waiting for bank statements. The moment money moves in your business, your dashboard updates. Track revenue, expenses, and net position at a glance. Know exactly where you stand — today, not tomorrow.</p>
         </div>
         <div class="feature-visual">
           <div class="mockup">
@@ -794,9 +895,9 @@
       <!-- Feature 2 -->
       <div class="feature-row flip reveal">
         <div class="feature-text">
-          <div class="feature-tag">Automated</div>
-          <h3>Smart Invoice Reconciliation</h3>
-          <p>Owoye automatically matches every bank credit to the corresponding invoice using AI pattern recognition. No more manual data entry. Know the moment you've been paid — and which invoices are still outstanding.</p>
+          <div class="feature-tag">Before → After</div>
+          <h3>Turn hours of reconciliation into seconds</h3>
+          <p>Owoye automatically matches every bank credit to the corresponding invoice using AI pattern recognition. No manual data entry. You know the moment you've been paid — and exactly which invoices are still outstanding. What used to take hours now takes zero.</p>
         </div>
         <div class="feature-visual">
           <div class="mockup">
@@ -824,9 +925,9 @@
       <!-- Feature 3 -->
       <div class="feature-row reveal">
         <div class="feature-text">
-          <div class="feature-tag">AI-Powered</div>
-          <h3>Leo — Your AI Financial Advisor</h3>
-          <p>Ask Leo anything about your business finances in plain English. Get instant insights on your cash position, revenue trends, top customers, and actionable recommendations — like having a CFO available 24/7.</p>
+          <div class="feature-tag">Before → After</div>
+          <h3>Get CFO-grade answers in plain English — in seconds</h3>
+          <p>Leo, your AI financial advisor, is available 24/7. Ask anything about your business in plain English and get a specific, actionable answer instantly. No jargon. No accountant on retainer. Just clear guidance exactly when you need it.</p>
         </div>
         <div class="feature-visual">
           <div class="mockup">
@@ -846,9 +947,9 @@
       <!-- Feature 4 -->
       <div class="feature-row flip reveal">
         <div class="feature-text">
-          <div class="feature-tag">Predictive</div>
-          <h3>Revenue Forecasting & Insights</h3>
-          <p>Owoye's prediction engine analyses your historical transaction patterns to forecast your next 30 days of revenue — giving you the foresight to make confident decisions about expenses, hiring, and growth investments.</p>
+          <div class="feature-tag">Before → After</div>
+          <h3>Know what's coming before it arrives</h3>
+          <p>Owoye's forecasting engine analyses your historical transactions to predict your next 30 days of revenue. No more gut-feel decisions about hiring, inventory, or expansion. Make every ₦million call with data behind it.</p>
         </div>
         <div class="feature-visual">
           <div class="mockup">
@@ -878,49 +979,13 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section how" id="how-it-works">
-    <div class="container">
-      <div class="reveal text-center" style="margin-bottom:56px;">
-        <span class="tag tag--cream">How It Works</span>
-        <h2 class="section-title" style="color:#fff;">Up and running in minutes</h2>
-      </div>
-      <div class="how-grid">
-        <div class="how-card reveal" data-delay="1">
-          <div class="how-step">01</div>
-          <div class="how-icon">
-            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
-          </div>
-          <h3>Connect Your Bank</h3>
-          <p>Link your business bank accounts in under 2 minutes using our CBN-regulated Mono integration. All 30+ Nigerian banks supported. Your data is encrypted end-to-end.</p>
-        </div>
-        <div class="how-card reveal" data-delay="2">
-          <div class="how-step">02</div>
-          <div class="how-icon">
-            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
-          </div>
-          <h3>Create Your First Invoice</h3>
-          <p>Build professional invoices in seconds. Add line items, set payment terms, and send directly to customers. Owoye tracks every invoice from creation to payment automatically.</p>
-        </div>
-        <div class="how-card reveal" data-delay="3">
-          <div class="how-step">03</div>
-          <div class="how-icon">
-            <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3>Get Paid. Stay Informed.</h3>
-          <p>Receive payment alerts the moment funds hit your account. Leo reconciles the transaction, updates your dashboard, and notifies you of any outstanding balances — automatically.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECURITY -->
+  <!-- SECURITY — Trust Builder -->
   <section class="section security" id="security">
     <div class="container">
       <div class="reveal text-center" style="margin-bottom:48px;">
-        <span class="tag tag--green">Security &amp; Trust</span>
-        <h2 class="section-title">Your money data is<br><span style="background:linear-gradient(135deg,#006D3E,#0B1F3B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">fortress-grade protected.</span></h2>
-        <p class="section-sub">We handle the most sensitive data in your business. Security isn't a feature for us — it's the foundation everything is built on.</p>
+        <span class="tag tag--green">Your Trust Is Everything</span>
+        <h2 class="section-title">We handle the most sensitive data<br>in your business.<br><span style="background:linear-gradient(135deg,#006D3E,#0B1F3B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">We treat it accordingly.</span></h2>
+        <p class="section-sub">Security isn't a feature we added — it's the foundation everything else is built on. Your financial data will never be sold, shared, or used against you.</p>
       </div>
       <div class="badges-grid reveal">
         <div class="sec-badge">
@@ -979,7 +1044,7 @@
       <div class="sec-commitment reveal">
         <div class="sec-commitment-text">
           <div class="sub">Our Commitment</div>
-          <h3>We will never sell, share, or monetise your data.</h3>
+          <h3>We will never sell, share, or monetise your data. Ever.</h3>
         </div>
         <div class="sec-stats">
           <div class="sec-stat">
@@ -999,13 +1064,86 @@
     </div>
   </section>
 
-  <!-- MARKET -->
+  <!-- ⑥ AVOID FAILURE — The Stakes -->
+  <section class="section stakes" id="stakes">
+    <div class="container">
+      <div class="reveal text-center">
+        <span class="tag tag--green">What's at Stake</span>
+        <h2 class="section-title">Two paths. One choice.</h2>
+        <p class="section-sub">Running your business without financial clarity isn't just stressful — it's dangerous. And it doesn't have to be this way.</p>
+      </div>
+      <div class="stakes-grid reveal">
+        <div class="stakes-col before">
+          <span class="stakes-col-label">Without Owoye</span>
+          <h3>Another year of guessing, scrambling, and hoping.</h3>
+          <ul class="stakes-list">
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              You discover a client is 30 days overdue — by accident, when the cash doesn't arrive
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              Hours every week manually matching bank statements to invoices — time you'll never get back
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              A cash crunch blindsides you right when you needed to make payroll or restock
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              You make ₦million hiring and expansion decisions on gut feel and prayer
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              Your most profitable clients and your biggest risks stay invisible until it's too late
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✕</span>
+              42% of businesses running this way will fail — not from bad products, but from financial blindness
+            </li>
+          </ul>
+        </div>
+        <div class="stakes-col after">
+          <span class="stakes-col-label">With Owoye</span>
+          <h3>Confidence, clarity, and control — every single day.</h3>
+          <ul class="stakes-list">
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              You see exactly what's owed to you in real time — and get alerts before anything goes overdue
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              Invoices reconcile automatically the moment payment hits — zero manual work
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              You know your next 30 days of cash position before they arrive — no more surprises
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              Ask Leo any financial question in plain English and get a specific answer in seconds
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              Spend less than 5 minutes a day on financial admin — the rest is automatic
+            </li>
+            <li class="stakes-item">
+              <span class="stakes-icon">✓</span>
+              Make every growth decision — hiring, inventory, expansion — backed by real data
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ SUCCESS — The Transformed World (Market for Investors) -->
   <section class="section market" id="market">
     <div class="container">
       <div class="reveal text-center" style="margin-bottom:48px;">
-        <span class="tag tag--green">Market Opportunity</span>
-        <h2 class="section-title">A massive, underserved market</h2>
-        <p class="section-sub">Africa has 37 million SMEs. Less than 3% use any form of digital financial management. Owoye is positioned to be the category-defining platform.</p>
+        <span class="tag tag--green">The Bigger Picture</span>
+        <h2 class="section-title">37 million businesses.<br>One financial OS for Africa.</h2>
+        <p class="section-sub">Owoye's success isn't just one business owner gaining clarity. It's what happens when the most underserved market in fintech finally gets the tools it deserves.</p>
       </div>
       <div class="market-stats">
         <div class="market-stat-card reveal" data-delay="1">
@@ -1028,16 +1166,16 @@
         <h3>Why Owoye Wins</h3>
         <div class="why-wins-grid">
           <div class="why-win-card">
-            <h4>Africa-First</h4>
-            <p>Built specifically for Nigerian banking infrastructure, naira-denominated, CBN-compliant.</p>
+            <h4>Africa-First by Design</h4>
+            <p>Built specifically for Nigerian banking infrastructure, naira-denominated, and CBN-compliant — not a Western product retrofitted for Africa.</p>
           </div>
           <div class="why-win-card">
             <h4>Network Effects</h4>
-            <p>Every customer added strengthens Leo's intelligence across the entire platform.</p>
+            <p>Every customer added makes Leo smarter for the entire platform. The data advantage compounds with every business that joins.</p>
           </div>
           <div class="why-win-card">
             <h4>Regulatory Moat</h4>
-            <p>CBN-regulated Mono API integration creates a high barrier to entry for competitors.</p>
+            <p>CBN-regulated Mono API integration creates a high barrier to entry. By the time a competitor builds this, we'll have the data that makes them irrelevant.</p>
           </div>
         </div>
       </div>
@@ -1116,26 +1254,26 @@
     <div class="container">
       <div class="reveal text-center" style="margin-bottom:48px;">
         <span class="tag tag--green">Why Now</span>
-        <h2 class="section-title">The conditions have never been better</h2>
-        <p class="section-sub">Three forces are converging to make Owoye the right product at exactly the right moment.</p>
+        <h2 class="section-title">The window is open.<br>It won't be forever.</h2>
+        <p class="section-sub">Three forces are converging to make Owoye the right product at exactly the right moment — and first-mover advantage in this market is everything.</p>
       </div>
       <div class="whynow-cards">
         <div class="whynow-card reveal" data-delay="1">
           <div class="whynow-num">01</div>
-          <h3>Open Banking is Here</h3>
+          <h3>Open Banking is Live</h3>
           <p>The CBN's open banking framework is now live. For the first time, fintech platforms can securely read bank data with user consent — without screen scraping or workarounds. Owoye is built on this infrastructure from day one.</p>
           <div class="whynow-source">CBN Open Banking Policy, 2023</div>
         </div>
         <div class="whynow-card reveal" data-delay="2">
           <div class="whynow-num">02</div>
           <h3>SMEs Are Going Digital Fast</h3>
-          <p>Nigeria's SME digital adoption jumped 38% between 2021 and 2024, accelerated by POS proliferation, mobile banking, and post-COVID necessity. The businesses Owoye targets are already online — they just lack the right financial tools.</p>
+          <p>Nigeria's SME digital adoption jumped 38% between 2021 and 2024, accelerated by POS proliferation, mobile banking, and post-COVID necessity. The businesses Owoye serves are already online — they just lack the right financial tools.</p>
           <div class="whynow-source">IFC Digital Finance Report, 2024</div>
         </div>
         <div class="whynow-card reveal" data-delay="3">
           <div class="whynow-num">03</div>
-          <h3>AI Makes It Affordable</h3>
-          <p>What previously required a full-time CFO and accounting team can now be automated with AI. Owoye brings enterprise-grade financial intelligence to businesses that could never afford it before — at a fraction of the cost.</p>
+          <h3>AI Makes CFO-Grade Intelligence Affordable</h3>
+          <p>What previously required a full-time CFO and accounting team can now be delivered with AI. Owoye brings enterprise-grade financial intelligence to businesses that could never afford it — at a fraction of the cost.</p>
           <div class="whynow-source">McKinsey Africa Fintech Outlook, 2024</div>
         </div>
       </div>
@@ -1143,7 +1281,7 @@
         <div class="validation-text">
           <div class="sub">Problem Validation</div>
           <h3>We talked to 40+ SME owners before writing a single line of code.</h3>
-          <p>Every feature in Owoye was shaped by direct conversations with Nigerian business owners — logistics companies, manufacturers, food & beverage brands, and professional services firms. The pain is real. The demand is clear.</p>
+          <p>Every feature in Owoye was shaped by direct conversations with Nigerian business owners — logistics companies, manufacturers, food & beverage brands, and professional services firms. The pain is real. The demand is proven. We're not building a solution looking for a problem.</p>
         </div>
         <div class="validation-stats">
           <div class="v-stat"><div class="v-stat-value">40+</div><div class="v-stat-label">SME interviews conducted</div></div>
@@ -1155,17 +1293,17 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ⑤ CALL TO ACTION (primary) -->
   <section class="cta-section" id="cta">
     <div class="cta-blob"></div>
     <div class="cta-inner reveal">
-      <h2>The future of African business finance starts here.</h2>
-      <p>We are currently in private beta and accepting a select group of early access partners. Be among the first African SMEs to experience a financial OS built exactly for you.</p>
+      <h2>The most successful African businesses will be the ones that see clearly.</h2>
+      <p>We are in private beta and accepting a select group of early access partners. Be among the first SMEs to experience a financial OS built exactly for the way you work — and the way Africa grows.</p>
       <div class="cta-btns">
         <a href="mailto:azeez@alluvium.net?subject=Owoye Early Access" class="btn-pill">Get Early Access — Free</a>
         <a href="mailto:azeez@alluvium.net?subject=Investor Enquiry — Owoye" class="btn-pill-outline">Talk to the Founders</a>
       </div>
-      <p class="cta-trust">CBN Regulated &nbsp;·&nbsp; AES-256 Encryption &nbsp;·&nbsp; SOC 2 Compliant</p>
+      <p class="cta-trust">CBN Regulated &nbsp;·&nbsp; AES-256 Encryption &nbsp;·&nbsp; SOC 2 Compliant &nbsp;·&nbsp; Your data is never sold</p>
     </div>
   </section>
 
@@ -1179,7 +1317,7 @@
           <span class="footer-co">Owoye Fintech Ltd.</span>
         </div>
         <div class="footer-links">
-          <a href="#problem">Problem</a>
+          <a href="#problem">The Problem</a>
           <a href="#features">Features</a>
           <a href="#security">Security</a>
           <a href="#market">Market</a>
